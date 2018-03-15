@@ -12,4 +12,4 @@ const seedDB = (data) => {
   });
 };
 
-seedDB(genAllData(500));
+seedDB(genAllData(300));
