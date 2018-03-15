@@ -12,6 +12,7 @@
     "build": "webpack -d",
     "seed": "node database/seed.js",
     "drop": "node database/drop.js",
+    "data": "node database/datagen.js",
     "test": "jest"
   },
   "devDependencies": {
