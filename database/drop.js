@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Recommendations } = require('./dataGen');
+const { Booking } = require('./index.js');
 
 mongoose.connect('mongodb://localhost/bookings');
 
