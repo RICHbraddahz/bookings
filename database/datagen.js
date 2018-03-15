@@ -74,8 +74,6 @@ const allowChildren = () => {
   return false;
 };
 
-console.log(genRatingAmount(2018));
-
 const genOneData = (listingId) => {
   const booking = {
     id: listingId,

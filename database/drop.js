@@ -14,10 +14,6 @@ const dropDB = () => {
   });
 };
 
-// mongoose.connection.collections['bookings'].drop( function(err) {
-//   console.log('collection dropped');
-// });
-
 dropDB();
 
 exports.dropDB = dropDB;
