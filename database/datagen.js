@@ -1,4 +1,3 @@
-const faker = require('faker');
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/bookings');
@@ -92,10 +91,12 @@ const genOneData = (listingId) => {
   return booking;
 };
 
-console.log(genOneData(2));
-
 const genAllData = (quantity) => {
-
+  const bookings = [];
+  for (let i = 0; i < quantity; i += 1) {
+    bookings.push(genOneData(i));
+  }
+  return bookings;
 };
 
 exports.genAllData = genAllData;
