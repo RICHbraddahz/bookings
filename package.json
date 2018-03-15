@@ -10,6 +10,7 @@
   "scripts": {
     "start": "npm run drop && npm run seed && npm run build && nodemon server/index.js",
     "build": "webpack -d",
+    "initDB": "node database/index.js",
     "seed": "node database/seed.js",
     "drop": "node database/drop.js",
     "data": "node database/datagen.js",

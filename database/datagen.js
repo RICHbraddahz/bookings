@@ -23,7 +23,7 @@ const genRandomDate = (monthInt, yearInt) => {
   year = month > 12 ? year + 1 : year;
   month = month > 12 ? month - 12 : month;
   const numDays = months[month];
-  const day = Math.floor(numDays * Math.random());
+  const day = Math.floor(numDays * Math.random()) + 1;
   const date = `${month}/${day}/${year}`;
   return date;
 };

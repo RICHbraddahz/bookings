@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Recommendations } = require('./dataGen');
+const { Booking } = require('./index.js');
 
 mongoose.connect('mongodb://localhost/bookings');
 
@@ -13,6 +13,10 @@ const dropDB = () => {
     }
   });
 };
+
+// mongoose.connection.collections['bookings'].drop( function(err) {
+//   console.log('collection dropped');
+// });
 
 dropDB();
 

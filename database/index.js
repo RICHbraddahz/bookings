@@ -54,4 +54,5 @@ module.exports.other = other;
 module.exports.find = find;
 module.exports.db = mongoose;
 module.exports.Booking = Booking;
+module.exports.bookingsSchema = bookingsSchema;
 module.exports.save = save;
