@@ -89,12 +89,13 @@ const genOneData = (listingId) => {
   return booking;
 };
 
-const genAllData = (quantity) => {
+const genAllData = (start, quantity) => {
   const bookings = [];
-  for (let i = 0; i < quantity; i += 1) {
+  for (let i = start; i < quantity; i += 1) {
     bookings.push(genOneData(i));
   }
   return bookings;
 };
 
 exports.genAllData = genAllData;
+exports.genOneData = genOneData;

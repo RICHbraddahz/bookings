@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Booking } = require('./index.js');
-const { genAllData } = require('./datagen.js');
+const { genAllData, genOneData } = require('./datagen.js');
 
 mongoose.connect('mongodb://localhost/bookings');
 
@@ -12,4 +12,11 @@ const seedDB = (data) => {
   });
 };
 
-seedDB(genAllData(300));
+const seedMany = (quantity) => {
+  for (let i = 0; i < quantity; i += 100) {
+    seedDB(genAllData(i, quantity));
+  }
+};
+
+seedMany(200);
+
