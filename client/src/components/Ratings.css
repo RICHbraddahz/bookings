@@ -1,0 +1,21 @@
+.RatingsMain = {
+  height: 20px;
+  width: 100px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.Stars {
+  font-size: 13px;
+  color: #55b0b2;
+  align-self: center;
+}
+
+.RatingsAmount {
+  font-size: 15px;
+  align-items: flex-end;
+  padding-left: 3px;
+  font-family: 'Quicksand', sans-serif;
+}

@@ -1,27 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Main } from './BookingPrices.css';
 
-  const Main = styled.div`
-    height: 20px;
-    width: 100px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    font-family: 'Quicksand', sans-serif;
-  `;
 class BookingPrices extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      starsArr : []
+      starsArr: []
     };
   }
-  render (props) {
+  render(props) {
     return (
-      <Main>
-
-      </Main>
-    )
+      <button className={Main} />
+    );
   }
 }
 

@@ -1,0 +1,20 @@
+.Dates {
+  font-size: 12px;
+  color: grey;
+  font-family: 'Quicksand', sans-serif;
+  margin-left: 15px;
+}
+
+.CustomInput {
+  width: 75px;
+  height: 42px;
+}
+
+.CalendarMain {
+  height: 42px;
+  width: 130px;
+  display: flex;
+}
+. Main {
+  
+}

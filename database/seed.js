@@ -12,8 +12,8 @@ const seedDB = () => {
     const db = client.db('bookings');
     const collection = db.collection('bookings');
 
-    let count = parseInt(10000000 / numCPUs);
-    const size = 20000;
+    let count = parseInt(100000 / numCPUs);
+    const size = 100;
 
     async function insertBulk(start, stop) {
       let ops = _.range(start, stop).map((id) => {
