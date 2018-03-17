@@ -1,12 +1,9 @@
+import axios from 'axios';
+import moment from 'moment';
 import React from 'react';
-
 import Calendar from './Calendar';
 import Ratings from './Ratings';
 import Guests from './Guests';
-import MdClear from 'react-icons/lib/md/clear';
-import BookingPrices from './BookingPrices';
-import axios from 'axios';
-import moment from 'moment';
 
 import { BookingsMain, Price, Amount, Night, Book, Fake, Line, BookingOptions } from './Bookings.css';
 

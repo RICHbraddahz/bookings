@@ -1,10 +1,6 @@
 import React from 'react';
-import MdClear from 'react-icons/lib/md/clear';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import axios from 'axios';
-import moment from 'moment';
 import { Bookings } from './components/Bookings';
-
 export default class App extends React.Component {
   render() {
     return (
