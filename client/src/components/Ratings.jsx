@@ -1,9 +1,5 @@
 import React from 'react';
-import FaStarO from 'react-icons/lib/fa/star-o';
-import FaStarHalf from 'react-icons/lib/fa/star-half';
-import FaStarHalfEmpty from 'react-icons/lib/fa/star-half-empty';
 import FaStar from 'react-icons/lib/fa/star';
-import styled from 'styled-components';
 import { RatingsMain, Stars, RatingsAmount } from './Ratings.css';
 
 class Ratings extends React.Component {

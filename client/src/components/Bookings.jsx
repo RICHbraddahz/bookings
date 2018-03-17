@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Calendar from './Calendar.jsx';
-import Ratings from './Ratings.jsx';
-import Guests from './Guests.jsx';
+import Calendar from './Calendar';
+import Ratings from './Ratings';
+import Guests from './Guests';
 import MdClear from 'react-icons/lib/md/clear';
-import BookingPrices from './BookingPrices.jsx';
+import BookingPrices from './BookingPrices';
 import axios from 'axios';
 import moment from 'moment';
 
