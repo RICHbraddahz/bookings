@@ -8,84 +8,8 @@ import BookingPrices from './components/BookingPrices.jsx';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
+import { BookingsMain, Price, Amount, Night, Book, Fake, Line, BookingOptions } from './App.css';
 
-    const BookingsMain = styled.div`
-      width: 396px;
-      height: 329px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    `;
-    const Exit = styled.h1`
-      margin: 10px;
-      height: 38px;
-      width: 40px;
-      font-size: 30px;
-      color: #878787;
-      align-self: flex-start;
-      margin-left: 20px;
-      text-align: center;
-      &:hover {
-        border-color: #e5e5e5;
-        border-radius: 55%;
-        border-style: solid;
-      }
-    `;
-    const Price = styled.div`
-      font-family: 'Quicksand', sans-serif;
-      width: 300px;
-      height: 70px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    `;
-    const Amount = styled.div`
-      font-size: 1.5em;
-      color: #4c4c4c;
-      align-self: flex-start;
-      font-weight: bolder;
-      display: flex;
-      align-items: center;
-    `;
-    const Night = styled.div`
-     font-family: 'Quicksand', sans-serif;
-     color: grey;
-     font-size: 13px;
-    `;
-    const Book = styled.button`
-      font-size: 1.3em;
-      background-color: #ff2f51;
-      color: white;
-      border-radius: 5px;
-      width: 300px;
-      height: 50px;
-      z-index: -1;
-    `;
-    const Fake = styled.div`
-      height: 50px;
-      width: 50px;
-    `;
-    const InvalidBook = Book.extend `
-    `;
-    const Line = styled.div`
-      height: 20px;
-      width: 300px;
-      border-width: 1px;
-      border-style: solid;
-      border-color: #dbdbdb;
-      border-right: none;
-      border-left: none;
-      border-bottom: none;
-    `;
-    const BookingOptions = styled.div`
-      display: flex;
-      justify-content: space-between;
-      width: 300px;
-    `;
-    const BookMain = styled.div`
-    `;
 class Bookings extends React.Component {
   constructor(props) {
     super(props);
@@ -216,27 +140,27 @@ class Bookings extends React.Component {
   }
   render () {
     return (
-      <BookingsMain>
-        <Price>
-          <Amount>
+      <div className={BookingsMain}>
+        <div className={Price}>
+          <div className={Amount}>
             ${this.state.data.cost}
-            <Night>  per night </Night>
-          </Amount>
+            <div className={Night}>  per night </div>
+          </div>
           <Ratings ratingAmount={this.state.data.numberOfRatings} stars={this.state.data.rating}/>
-        </Price>
-        <Line/>
-        <BookingOptions>
+        </div>
+        <div className={Line}/>
+        <div className={BookingOptions}>
         <Calendar handleInvalidDates={this.handleInvalidDates} ud={this.state.unavailableDates} fetchInfo={this.fetchInfo.bind(this)}/>
         <Guests children_allowed={this.state.data.childrenAllowed} guest_max={this.state.data.guestMax} handleGuest={this.handleGuest} toggleBook={this.toggleBook}/>
-        </BookingOptions>
-        <Fake onClick={this.handleBook}></Fake>
+        </div>
+        <button className={Fake} onClick={this.handleBook}></button>
         {this.state.renderBook === true
-          ? <BookMain>
-              {this.state.invalidDate === false ? <Book onClick={this.handleBook}> {this.state.booked}</Book> : <InvalidBook> Dates not available</InvalidBook>}
-            </BookMain>
+          ? <div className={BookingsMain}>
+              {this.state.invalidDate === false ? <button className={Book} onClick={this.handleBook}> {this.state.booked}</button> : <button className={Book}> Dates not available</button>}
+            </div>
           : null
         }
-      </BookingsMain>
+      </div>
     )
   }
 }
