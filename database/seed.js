@@ -1,22 +1,49 @@
-const mongoose = require('mongoose');
-const { Booking } = require('./index.js');
+const { MongoClient } = require('mongodb');
+const _ = require('ramda');
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
 const { genAllData, genOneData } = require('./datagen.js');
+const { Booking } = require('./index.js');
 
-mongoose.connect('mongodb://localhost/bookings');
+let time = new Date().getTime();
 
-const seedDB = (data) => {
-  const seedPromise = Booking.create(data);
-  seedPromise.then(() => {
-    console.log('Data has been entered into the database!');
-    process.exit();
+const seedDB = () => {
+  MongoClient.connect('mongodb://localhost/').then((client) => {
+    const db = client.db('bookings');
+    const collection = db.collection('bookings');
+
+    let count = parseInt(10000000 / numCPUs);
+    const size = 20000;
+
+    async function insertBulk(start, stop) {
+      let ops = _.range(start, stop).map((id) => {
+        return { insertOne: { document: genOneData(id) } };
+      });
+      await collection.bulkWrite(ops, { ordered: false });
+      count -= size;
+      if (count > 0) {
+        insertBulk(stop, stop + size);
+      } else {
+        console.log('done in ', (new Date().getTime() - time) / 1000, 's :3 ^_^ <3 <(^_^<)');
+        client.close();
+        process.exit();
+      }
+    }
+    insertBulk(0, size);
   });
 };
 
-const seedMany = (quantity) => {
-  for (let i = 0; i < quantity; i += 100) {
-    seedDB(genAllData(i, quantity));
+if (cluster.isMaster) {
+  console.log(`Master ${process.pid} is running`);
+
+  // Fork workers
+  for (let i = 0; i < numCPUs; i += 1) {
+    cluster.fork();
   }
-};
-
-seedMany(200);
-
+  cluster.on('exit', (worker, code, signal) => {
+    console.log(`worker ${worker.process.pid} finished`);
+  });
+} else {
+  seedDB();
+  console.log(`worker ${process.pid} started`);
+}
