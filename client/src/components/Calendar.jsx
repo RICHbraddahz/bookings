@@ -4,25 +4,8 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-dates/lib/css/_datepicker.css';
+import { Dates, CustomInput, CalendarMain, Main } from './Calendar.css';
 //import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-const Main = styled.div `
-
-`;
-const Dates = styled.div`
-  font-size: 12px;
-  color: grey;
-  font-family: 'Quicksand', sans-serif;
-  margin-left: 15px;
-`;
-const CustomInput = styled.input`
-  width: 75px;
-  height: 42px;
-`;
-const CalendarMain = styled.div`
-  height: 42px;
-  width: 130px;
-  display: flex;
-`;
 class Calendar extends React.Component {
   constructor (props) {
     super(props)
@@ -135,11 +118,11 @@ class Calendar extends React.Component {
   }
   render() {
     return (
-      <Main onClick={this.toggleRender}>
-        <Dates> Dates </Dates>
-        <CalendarMain>
+      <button className={Main} onClick={this.toggleRender}>
+        <div className={Dates}> Dates </div>
+        <div className={CalendarMain}>
           <DatePicker
-            customInput={<CustomInput />}
+            input className={CustomInput}
             selected={this.state.startDate}
             selectsStart
             startDate={this.state.startDate}
@@ -150,7 +133,7 @@ class Calendar extends React.Component {
             maxDate={moment().add(3, "months")}
           />
           <DatePicker
-            customInput={<CustomInput />}
+            input className={CustomInput}
             selected={this.state.endDate}
             selectsEnd
             startDate={this.state.startDate}
@@ -160,8 +143,8 @@ class Calendar extends React.Component {
             excludeDates={this.state.excludeDates}
             maxDate={moment().add(3, "months")}
           />
-        </CalendarMain>
-      </Main>
+        </div>
+      </button>
   )}
 }
 

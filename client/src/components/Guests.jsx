@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Main, Guest, SelectGuest, GuestChoices, MainGuestSelection, Guest }
 
 
 const Main = styled.div`

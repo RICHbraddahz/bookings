@@ -10,8 +10,8 @@ class BookingPrices extends React.Component {
   }
   render(props) {
     return (
-      <div className={Main} />
-    )
+      <button className={Main} />
+    );
   }
 }
 
