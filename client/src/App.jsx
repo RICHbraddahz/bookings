@@ -28,117 +28,116 @@ class Bookings extends React.Component {
     this.toggleBook = this.toggleBook.bind(this);
     this.addInvalidDates = this.addInvalidDates.bind(this);
   }
-  componentDidMount () {
+  componentDidMount() {
     this.fetchInfo();
-     let id = this.props.match.params.id;
-    let context = this;
-    var arr = [];
+    let id = this.props.match.params.id;
+    const context = this;
+    let arr = [];
     axios.get(`http://localhost:3002/api/bookings/${id}`)
-      .then(function (response) {
+      .then((response) => {
         context.addInvalidDates(response.data[0].unavailableDates);
-        context.setState(function(){
+        context.setState(() => {
           return {
-            data : response.data[0],
-          }
-        })
+            data: response.data[0],
+          };
+        });
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log('error', error);
-      })
+      });
     console.log('here', this.state.data.unavailableDates);
   }
-  toggleBook () {
-    if(this.state.renderBook === true){
-      this.setState(function(){
+  toggleBook() {
+    if (this.state.renderBook === true) {
+      this.setState(() => {
         return {
-          renderBook : false
-        }
-      })
+          renderBook: false,
+        };
+      });
     } else {
-      this.setState(function(){
+      this.setState(() => {
         return {
-          renderBook : true
-        }
-      })
+          renderBook: true,
+        };
+      });
     }
   }
-  fetchInfo () {
+  fetchInfo() {
     // return this.state.unavailableDates;
     let id = this.props.match.params.id;
     let context = this;
     var arr = [];
     axios.get(`http://localhost:3002/api/bookings/${id}`)
-      .then(function (response) {
+      .then((response) => {
         context.addInvalidDates(response.data[0].unavailableDates);
-        context.setState(function(){
+        context.setState(() =>{
           return {
-            data : response.data[0],
-          }
-        })
+            data: response.data[0],
+          };
+        });
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log('error', error);
-      })
+      });
     console.log('here', this.state.data.unavailableDates);
   }
   addInvalidDates (date) {
     console.log(date[0]);
     console.log()
     var final = [];
-    for(var i = 0; i < date.length; i++){
-
-      var correct = date[i].split('/')
-      var last = correct.pop();
+    for(let i = 0; i < date.length; i += 1) {
+      let correct = date[i].split('/');
+      let last = correct.pop();
       correct.unshift(last);
       correct = correct.join('/');
       console.log(correct);
       final.push(moment(correct));
     }
-    this.setState(function(){
+    this.setState(() => {
       return {
         unavailableDates: final
       }
     })
   }
-  handleInvalidDates (option) {
-    if(option === true){
+  handleInvalidDates(option) {
+    if (option === true) {
       console.log('not ready to book')
-      this.setState(function(){
+      this.setState(() => {
         return {
           invalidDate: true,
           readyToBook: false,
-        }
-      })
+        };
+      });
     } else {
-      console.log('ready to book')
-      this.setState(function(){
+      console.log('ready to book');
+      this.setState(() => {
         return {
           invalidDate: false,
           readyToBook: true,
-        }
-      })
+        };
+      });
     }
   }
-  handleGuest (adultAmount) {
-    if(adultAmount >= 1) {
-      this.setState(function () {
+  handleGuest(adultAmount) {
+    if (adultAmount >= 1) {
+      this.setState(() => {
         return {
-          guestReady: true
-        }
-      })
+          guestReady: true,
+        };
+      });
     }
   }
-  handleBook () {
+  handleBook() {
     console.log('booked has ran');
-    if(this.state.invalidDate === false && this.state.guestReady === true){
-      this.setState(function() {
+    if (this.state.invalidDate === false && this.state.guestReady === true) {
+      this.setState(() => {
         return {
           booked: 'Room has been booked',
-        }
-      })
+        };
+      });
     }
   }
-  render () {
+  render() {
     return (
       <div className={BookingsMain}>
         <div className={Price}>
