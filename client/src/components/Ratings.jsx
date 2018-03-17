@@ -10,7 +10,7 @@ class Ratings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      starsArr : []
+      starsArr : [],
     };
     this.calculateStars = this.calculateStars.bind(this);
   }
