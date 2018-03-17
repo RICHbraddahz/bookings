@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Calendar from './components/Calendar.js';
-import Ratings from './components/Ratings.js';
-import Guests from './components/Guests.js';
+import Calendar from './components/Calendar.jsx';
+import Ratings from './components/Ratings.jsx';
+import Guests from './components/Guests.jsx';
 import MdClear from 'react-icons/lib/md/clear';
-import BookingPrices from './components/BookingPrices.js';
+import BookingPrices from './components/BookingPrices.jsx';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
@@ -139,23 +139,23 @@ class Bookings extends React.Component {
     }
   }
   fetchInfo () {
-    return this.state.unavailableDates;
-    // let id = this.props.match.params.id;
-    // let context = this;
-    // var arr = [];
-    // axios.get(`http://localhost:3002/api/bookings/${id}`)
-    //   .then(function (response) {
-    //     context.addInvalidDates(response.data[0].unavailableDates);
-    //     context.setState(function(){
-    //       return {
-    //         data : response.data[0],
-    //       }
-    //     })
-    //   })
-    //   .catch(function (error) {
-    //     console.log('error', error);
-    //   })
-    // console.log('here', this.state.data.unavailableDates);
+    // return this.state.unavailableDates;
+    let id = this.props.match.params.id;
+    let context = this;
+    var arr = [];
+    axios.get(`http://localhost:3002/api/bookings/${id}`)
+      .then(function (response) {
+        context.addInvalidDates(response.data[0].unavailableDates);
+        context.setState(function(){
+          return {
+            data : response.data[0],
+          }
+        })
+      })
+      .catch(function (error) {
+        console.log('error', error);
+      })
+    console.log('here', this.state.data.unavailableDates);
   }
   addInvalidDates (date) {
     console.log(date[0]);

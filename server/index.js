@@ -1,17 +1,18 @@
 const express = require('express');
-let db = require('../database/');
-let app = express();
+const db = require('../database/');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-app.use(express.static(__dirname + '/../client/dist'));
+
+const port = 3002;
+const app = express();
+console.log(path.join(__dirname, '/../client/dist'));
+app.use('/bookings/:id', express.static(path.join(__dirname, '/../client')));
+// app.use('/', express.static(path.join(__dirname, '/../client/dist/bundle.js')));
 app.use(bodyParser.json());
 app.use(cors());
-let port = 3002;
 
 app.get('/api/bookings/:id', function (req, res) {
-
-
   let cb = function (data) {
     res.send(data);
   }
