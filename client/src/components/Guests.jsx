@@ -7,40 +7,25 @@ import { Main, Guest, SelectGuest, GuestChoices, MainGuestSelection, GuestMax, C
 //   border-color: grey;
 // `;
 
- const UpCountMain = styled.div`
-   width: 80px;
-   height: 30px;
-   font-size: 20px;
- `;
-const Close = styled.button `
-  width: 50px;
-  align-self: flex-end;
-  border: none;
-  color: #55b0b2;
-  &: hover {
-    text-decoration: underline;
-  }
-`;
-
 // const DisableCount = UpCount.extend`
 //   color: grey;
 //   border-color: grey;
 // `;
 
-let GuestSelection = (props) => {
+const GuestSelection = (props) => {
     return (
      <div className={MainGuestSelection}>
-      <div className={Choice}> <UpCountMain> Adult</UpCountMain> <button className={UpCount} onClick={ () => (props.handleAddGuest('adult', 'subtract'))}>-</button> {props.adultAmount}{props.maxHit === true ? <DisableCount> +</DisableCount> : <button className={UpCount} onClick={ () => (props.handleAddGuest('adult', 'add'))}>+</button>} </div>
+      <div className={Choice}> <button className={UpCountMain}> Adult</button> <button className={UpCount} onClick={ () => (props.handleAddGuest('adult', 'subtract'))}>-</button> {props.adultAmount}{props.maxHit === true ? <DisableCount> +</DisableCount> : <button className={UpCount} onClick={ () => (props.handleAddGuest('adult', 'add'))}>+</button>} </div>
       {props.childrenAllowed === true
-        ? <Choice>  <UpCountMain>Children </UpCountMain> <button className={UpCount} onClick={ () => (props.handleAddGuest('children', 'subtract'))}>-</button> {props.childrenAmount}{props.maxHit === true ? <DisableCount> +</DisableCount> : <button className={UpCount} onClick={ () => (props.handleAddGuest('children', 'add'))}>+</button>} </Choice>
-        : <DisableChoice>  <UpCountMain>Children </UpCountMain> <button className={UpCount}>-</button> {props.childrenAmount} <button className={UpCount}>+</button> </DisableChoice>
+        ? <Choice>  <button className={UpCountMain}>Children </button> <button className={UpCount} onClick={ () => (props.handleAddGuest('children', 'subtract'))}>-</button> {props.childrenAmount}{props.maxHit === true ? <DisableCount> +</DisableCount> : <button className={UpCount} onClick={ () => (props.handleAddGuest('children', 'add'))}>+</button>} </Choice>
+        : <DisableChoice>  <button className={UpCountMain}>Children </button> <button className={UpCount}>-</button> {props.childrenAmount} <button className={UpCount}>+</button> </DisableChoice>
       }
       {props.childrenAllowed === true
-        ? <Choice>  <UpCountMain>Infants </UpCountMain> <button className={UpCount} onClick={ () => (props.handleAddGuest('infant', 'subtract'))}>-</button> {props.infantAmount} {props.infantMaxHit === true ? <DisableCount>+ </DisableCount> : <button className={UpCount} onClick={ () => (props.handleAddGuest('infant', 'add'))}>+</button>} </Choice>
-        : <DisableChoice>  <UpCountMain>Infants </UpCountMain> <button className={UpCount}>-</button> {props.infantAmount} <button className={UpCount}>+</button> </DisableChoice>
+        ? <Choice>  <button className={UpCountMain}>Infants </button> <button className={UpCount} onClick={ () => (props.handleAddGuest('infant', 'subtract'))}>-</button> {props.infantAmount} {props.infantMaxHit === true ? <DisableCount>+ </DisableCount> : <button className={UpCount} onClick={ () => (props.handleAddGuest('infant', 'add'))}>+</button>} </Choice>
+        : <DisableChoice>  <button className={UpCountMain}>Infants </button> <button className={UpCount}>-</button> {props.infantAmount} <button className={UpCount}>+</button> </DisableChoice>
       }
       <div className={GuestMax}> {props.guestMax} guests maximum. Infants don’t count toward the number of guests.</div>
-      <Close onClick={props.close}> Close</Close>
+      <button className={Close} onClick={props.close}> Close</button>
      </div>
     )
 
