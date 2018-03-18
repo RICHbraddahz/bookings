@@ -1,9 +1,5 @@
 import React from 'react';
-import FaStarO from 'react-icons/lib/fa/star-o';
-import FaStarHalf from 'react-icons/lib/fa/star-half';
-import FaStarHalfEmpty from 'react-icons/lib/fa/star-half-empty';
 import FaStar from 'react-icons/lib/fa/star';
-import styled from 'styled-components';
 import { RatingsMain, Stars, RatingsAmount } from './Ratings.css';
 
 class Ratings extends React.Component {
@@ -20,7 +16,7 @@ class Ratings extends React.Component {
   calculateStars () {
     var stars = this.props.stars;
     var starsArr = [];
-    for(var i = 0; i < this.props.stars; i++){
+    for (let i = 0; i < this.props.stars; i += 1) {
       starsArr.push(<FaStar/>);
     }
     this.setState(function(){
@@ -29,7 +25,7 @@ class Ratings extends React.Component {
       }
     })
   }
-  render (props) {
+  render(props) {
 
     return (
       <div className={RatingsMain}>
