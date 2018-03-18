@@ -16,7 +16,7 @@ class Ratings extends React.Component {
   calculateStars () {
     var stars = this.props.stars;
     var starsArr = [];
-    for(var i = 0; i < this.props.stars; i++){
+    for (let i = 0; i < this.props.stars; i += 1) {
       starsArr.push(<FaStar/>);
     }
     this.setState(function(){
@@ -25,7 +25,7 @@ class Ratings extends React.Component {
       }
     })
   }
-  render (props) {
+  render(props) {
 
     return (
       <div className={RatingsMain}>
