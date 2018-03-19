@@ -12,6 +12,7 @@
     "build": "webpack -d",
     "build-dev": "webpack -d --watch",
     "initDB": "node database/index.js",
+    "seed-pg": "node database/PostgreSQL/seedPG.js",
     "seed": "node database/seed.js",
     "drop": "node database/drop.js",
     "data": "node database/datagen.js",
