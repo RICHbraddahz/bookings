@@ -5,12 +5,8 @@ const pgp = require('pg-promise')({
 
 const db = pgp('postgres://localhost:5432/seabnb');
 const cs = new pgp.helpers.ColumnSet(
-  [
-    'unavailabledates', 'rating', 'numberofratings', 'guestmax', 'cost', 'minstay', 'maxstay', 'childrenallowed',
-  ],
-  {
-    table: 'bookings',
-  },
+  ['unavailabledates', 'rating', 'numberofratings', 'guestmax', 'cost', 'minstay', 'maxstay', 'childrenallowed'],
+  { table: 'bookings' },
 );
 
 function getNextData(t, pageIndex) {
