@@ -30,7 +30,7 @@ const genDateArray = (monthInt, yearInt) => {
   for (let i = 0; i < length; i += 1) {
     dateArray.push(genRandomDate(monthInt, yearInt));
   }
-  return dateArray;
+  return JSON.stringify(dateArray);
 };
 
 const genRating = () => {
@@ -70,19 +70,16 @@ const allowChildren = () => {
   return false;
 };
 
-const genOneData = (listingId) => {
-  const booking = {
-    unavailableDates: genDateArray(3, 2018),
-    rating: genRating(),
-    numberOfRatings: genRatingAmount(200),
-    guestMax: genGuestMax(5),
-    cost: genCost(300),
-    minStay: genMinStay(3),
-    maxStay: genMaxStay(20),
-    childrenAllowed: allowChildren(),
-  };
-  return booking;
-};
+const genOneData = () => ({
+  unavailabledates: genDateArray(3, 2018),
+  rating: genRating(),
+  numberofratings: genRatingAmount(200),
+  guestmax: genGuestMax(5),
+  cost: genCost(300),
+  minstay: genMinStay(3),
+  maxstay: genMaxStay(20),
+  childrenallowed: allowChildren(),
+});
 
 const genAllData = (start, quantity) => {
   const bookings = [];

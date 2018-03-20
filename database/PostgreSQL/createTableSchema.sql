@@ -1,12 +1,11 @@
 CREATE TABLE bookings (
   id SERIAL PRIMARY KEY,
-  unavailableDates TEXT NOT NULL,
-  type TEXT NOT NULL,
+  unavailabledates TEXT NOT NULL,
   rating INT NOT NULL,
-  numberOfRatings INT NOT NULL,
-  guestMax INT NOT NULL,
+  numberofratings INT NOT NULL,
+  guestmax INT NOT NULL,
   cost INT NOT NULL,
-  minStay INT NOT NULL,
-  maxStay INT NOT NULL,
-  childrenAllowed BOOLEAN NOT NULL
+  minstay INT NOT NULL,
+  maxstay INT NOT NULL,
+  childrenallowed BOOLEAN NOT NULL
 );
