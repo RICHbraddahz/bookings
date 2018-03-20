@@ -33,10 +33,7 @@ const genDateArray = (monthInt, yearInt) => {
   return JSON.stringify(dateArray);
 };
 
-const genAmount = (max) => {
-  const amount = Math.floor(Math.random() * max);
-  return amount;
-};
+const genAmount = max => (Math.floor(Math.random() * max));
 
 const allowChildren = () => {
   if (Math.random() > .5) {
