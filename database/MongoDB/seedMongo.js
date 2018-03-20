@@ -33,6 +33,7 @@ const seedDB = () => {
   });
 };
 
+let finished = 0;
 if (cluster.isMaster) {
   console.log(`Master ${process.pid} is running`);
 
@@ -42,6 +43,11 @@ if (cluster.isMaster) {
   }
   cluster.on('exit', (worker, code, signal) => {
     console.log(`worker ${worker.process.pid} finished`);
+    if (finished === 3) {
+      process.exit();
+    } else {
+      finished += 1;
+    }
   });
 } else {
   seedDB();
