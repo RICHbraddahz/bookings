@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/bookings');
-const data = require('../fakeData.js');
+// const data = require('../fakeData.js');
 
 const bookingsSchema = mongoose.Schema({
   id: Number,

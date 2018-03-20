@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb');
 const _ = require('ramda');
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
-const { genAllData, genOneData } = require('./datagen.js');
+const { genAllData, genOneData } = require('./datagenMongo.js');
 const { Booking } = require('./index.js');
 
 let time = new Date().getTime();
