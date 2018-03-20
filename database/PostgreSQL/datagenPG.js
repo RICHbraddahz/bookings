@@ -33,32 +33,7 @@ const genDateArray = (monthInt, yearInt) => {
   return JSON.stringify(dateArray);
 };
 
-const genRating = () => {
-  const rating = Math.floor(Math.random() * 6);
-  return rating;
-};
-
-const genRatingAmount = (max) => {
-  const amount = Math.floor(Math.random() * max);
-  return amount;
-};
-
-const genGuestMax = (max) => {
-  const amount = Math.floor(Math.random() * max);
-  return amount;
-};
-
-const genCost = (max) => {
-  const amount = Math.floor(Math.random() * max);
-  return amount;
-};
-
-const genMinStay = (max) => {
-  const amount = Math.floor(Math.random() * max);
-  return amount;
-};
-
-const genMaxStay = (max) => {
+const genAmount = (max) => {
   const amount = Math.floor(Math.random() * max);
   return amount;
 };
@@ -72,12 +47,12 @@ const allowChildren = () => {
 
 const genOneData = () => ({
   unavailabledates: genDateArray(3, 2018),
-  rating: genRating(),
-  numberofratings: genRatingAmount(200),
-  guestmax: genGuestMax(5),
-  cost: genCost(300),
-  minstay: genMinStay(3),
-  maxstay: genMaxStay(20),
+  rating: genAmount(6),
+  numberofratings: genAmount(200),
+  guestmax: genAmount(5),
+  cost: genAmount(300),
+  minstay: genAmount(3),
+  maxstay: genAmount(20),
   childrenallowed: allowChildren(),
 });
 
