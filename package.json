@@ -19,7 +19,7 @@
     "seed-pg": "createdb seabnb && npm run create-table && node database/PostgreSQL/seedPG.js",
     "drop-pg": "dropdb seabnb",
     "seed-mongo": "node database/MongoDB/seedMongo.js",
-    "drop-mongo": "mongo recommendations --eval 'db.dropDatabase()'",
+    "drop-mongo": "mongo seabnb --eval 'db.dropDatabase()'",
     "data": "node database/datagen.js",
     "test": "jest"
   },

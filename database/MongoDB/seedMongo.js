@@ -23,7 +23,6 @@ async function generateBookings() {
       console.log(`Finished seeding in ${minutes} minutes and ${realSeconds} seconds`);
       bookings = [];
     }
-
     const Booking = {
       id: i,
       bookings: genOneData(),
