@@ -1,4 +1,3 @@
-// const db = require('../index.js');
 const { MongoClient } = require('mongodb');
 const { genOneData } = require('./datagenMongo.js');
 
