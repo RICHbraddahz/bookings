@@ -74,9 +74,8 @@ const allowChildren = () => {
   return false;
 };
 
-const genOneData = (listingId) => {
+const genOneData = () => {
   const booking = {
-    id: listingId,
     unavailableDates: genDateArray(3, 2018),
     rating: genRating(),
     numberOfRatings: genRatingAmount(200),
