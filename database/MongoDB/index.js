@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+const 
 
 mongoose.connect('mongodb://localhost/bookings');
-const data = require('../fakeData.js');
-
+// const data = require('../fakeData.js');
+const { genAllData } = require('./datagenMongo');
+const data = genAllData(0, 1000);
 const bookingsSchema = mongoose.Schema({
   id: Number,
   unavailableDates: Array,
