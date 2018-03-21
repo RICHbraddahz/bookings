@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "npm run drop && npm run seed && npm run build && nodemon server/index.js",
-    "start-pg": "npm run restart-pg && sleep 5s && npm run drop-pg && npm run seed-pg",
+    "start-pg": "npm run restart-pg && sleep 5s && npm run drop-pg && npm run seed-pg && node server/PGServer/server-pg.js",
     "start-mongo": "npm run drop-mongo && npm run seed-mongo && npm run build && node server/index.js",
     "build": "webpack -d",
     "build-dev": "webpack -d --watch",
