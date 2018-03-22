@@ -8,7 +8,7 @@ async function generateBookings() {
   let bookings = [];
   const startTime = new Date().getTime();
   for (let i = 0; i <= 10000001; i += 1) {
-    if (i % 100000 === 0) {
+    if (i % 100000 === 0 && i !== 0) {
       await collection.insertMany(bookings)
       .catch((e) => {
         console.error(e);
@@ -29,6 +29,6 @@ async function generateBookings() {
     bookings.push(Booking);
   }
   collection.createIndex({ id: 1 });
-  connect.close();
+  process.exit();
 }
 generateBookings();
