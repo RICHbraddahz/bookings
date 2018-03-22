@@ -5,7 +5,7 @@ const url = process.env.url || 'mongodb://localhost:27017';
 const dbName = process.env.dbname || 'seabnb';
 const startId = process.env.startId || 0;
 const endId = process.env.endId || 10000000;
-const idCount = process.env.idCount || 20;
+const idCount = process.env.idCount || 10000;
 
 const getAverage = array => (array.reduce((acc, val) => acc + val)) / array.length;
 
@@ -14,15 +14,15 @@ const getBenchmark = async () => {
   const db = client.db(dbName);
   const collection = db.collection('similarlistings');
   const startTime = new Date();
-  console.log('|******************************');
+  console.log('|******************************************************');
   console.log('| Building benchmark for MongoDB indexed by id');
-  console.log(`| ${idCount} ids from ${startId} to ${endId}`);
+  console.log(`| Querying ${idCount} ids from ${startId} to ${endId}`);
   console.log(`| Start time: ${startTime}`);
-  console.log('|******************************');
+  console.log('|******************************************************');
 
   const readTimes = [];
 
-  for (let i = 0; i < 10000; i += 1) {
+  for (let i = 0; i < idCount; i += 1) {
     const readStartTime = new Date()
     const randomNum = Math.floor(Math.random() * 10000000);
     await collection.findOne({ id: randomNum });
@@ -32,13 +32,13 @@ const getBenchmark = async () => {
   }
 
   const endTime = new Date();
-  console.log('|******************************');
+  console.log('|******************************************************');
   console.log('| Benchmark is now complete.');
   console.log(`| Start time: ${startTime}`);
   console.log(`| End time: ${endTime}`);
   console.log(`| Total elapsed time: ${dateMath.diff(startTime, endTime, 'seconds', true)} seconds`);
   console.log(`| Average read time: ${getAverage(readTimes)} seconds`);
-  console.log('|******************************');
+  console.log('|******************************************************');
 };
 
 getBenchmark();
