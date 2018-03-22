@@ -12,6 +12,7 @@
     "start-pg": "npm run restart-pg && sleep 5s && npm run drop-pg && npm run seed-pg && node server/PGServer/server-pg.js",
     "start-mongo": "npm run drop-mongo && npm run seed-mongo && npm run build && node server/index.js",
     "query-mongo": "node database/MongoDB/queryMongo.js",
+    "query-pg": "node database/PostgreSQL/queryPostgres.js",
     "build": "webpack -d",
     "build-dev": "webpack -d --watch",
     "initDB": "node database/index.js",
