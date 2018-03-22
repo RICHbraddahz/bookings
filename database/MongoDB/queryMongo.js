@@ -1,13 +1,13 @@
 const { MongoClient } = require('mongodb');
 const dateMath = require('date-arithmetic');
 
-const url = process.env.url || 'mongodb://localhost:27017';
-const dbName = process.env.dbname || 'seabnb';
-const startId = process.env.startId || 0;
-const endId = process.env.endId || 10000000;
-const idCount = process.env.idCount || 10000;
+const url = 'mongodb://localhost:27017';
+const dbName = 'seabnb';
+const startId = 0;
+const endId = 10000000;
+const idCount = 10000;
 
-const getAverage = array => (array.reduce((acc, val) => acc + val)) / array.length;
+const getAverage = array => ((array.reduce((acc, val) => acc + val)) / array.length);
 
 const getBenchmark = async () => {
   const client = await MongoClient.connect(`${url}/${dbName}`);
