@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const 
 
 mongoose.connect('mongodb://localhost/bookings');
 // const data = require('../fakeData.js');
