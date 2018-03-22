@@ -4,19 +4,20 @@ const pgp = require('pg-promise')({
 const dateMath = require('date-arithmetic');
 
 const db = pgp('postgres://localhost:5432/seabnb');
-const startId = process.env.startId || 0;
-const endId = process.env.endId || 10000000;
-const idCount = process.env.idCount || 20;
+const startId = 0;
+const endId = 10000000;
+const idCount = 20;
 
-const average = array => (array.reduce((acc, val) => acc + val)) / array.length;
+const getAverage = array => (array.reduce((acc, val) => acc + val)) / array.length;
 
-const runBenchmark = async () => {
+const getBenchmark = async () => {
   const startTime = new Date();
-  console.log('/* -----------------------');
-  console.log('| Starting benchmark.');
-  console.log('| Testing: MongoDB with id as index ');
+
+  console.log('|******************************************************');
+  console.log('| Building benchmark for PostgreSQL indexed by id');
+  console.log(`| Querying ${idCount} ids from ${startId} to ${endId}`);
   console.log(`| Start time: ${startTime}`);
-  console.log('+ ------------------------');
+  console.log('|******************************************************');
 
   const readTimes = [];
 
@@ -24,8 +25,8 @@ const runBenchmark = async () => {
     const readStartTime = new Date();
     const randomNum = Math.floor(Math.random() * 10000000);
     try {
-      const users = await db.any(`SELECT * FROM similarlistings WHERE id = ${randomNum}`, [true]);
-      let readTime = dateMath.diff(readStartTime, new Date(), 'seconds', true);
+      const users = await db.any(`SELECT * FROM bookings WHERE id = ${randomNum}`, [true]);
+      const readTime = dateMath.diff(readStartTime, new Date(), 'seconds', true);
       readTimes.push(readTime);
       console.log(`| Found id ${randomNum} in ${readTime} seconds`);
     }
@@ -35,13 +36,14 @@ const runBenchmark = async () => {
   }
 
   const endTime = new Date();
-  console.log('+ -----------------------');
-  console.log('| Completed benchmark.');
+
+  console.log('|******************************************************');
+  console.log('| Benchmark is now complete.');
   console.log(`| Start time: ${startTime}`);
-  console.log('| End time: ', endTime);
-  console.log(`| Elapsed time: ${dateMath.diff(startTime, endTime, 'seconds', true)} seconds`);
-  console.log(`| Average read time: ${average(readTimes)} seconds`);
-  console.log('\\* ----------------\\rm/--');
+  console.log(`| End time: ${endTime}`);
+  console.log(`| Total elapsed time: ${dateMath.diff(startTime, endTime, 'seconds', true)} seconds`);
+  console.log(`| Average read time: ${getAverage(readTimes)} seconds`);
+  console.log('|******************************************************');
 };
 
-runBenchmark();
+getBenchmark();
