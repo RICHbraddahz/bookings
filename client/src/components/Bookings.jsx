@@ -2,6 +2,7 @@ import axios from 'axios';
 import moment from 'moment';
 import React from 'react';
 import Calendar from './Calendar';
+import $ from 'jquery';
 import Ratings from './Ratings';
 import Guests from './Guests';
 
@@ -20,29 +21,31 @@ class Bookings extends React.Component {
     }
     this.handleInvalidDates = this.handleInvalidDates.bind(this);
     this.handleBook = this.handleBook.bind(this);
-    this.fetchInfo = this.fetchInfo.bind(this);
+    this.fetchBooking = this.fetchBooking.bind(this);
     this.handleGuest = this.handleGuest.bind(this);
     this.toggleBook = this.toggleBook.bind(this);
     this.addInvalidDates = this.addInvalidDates.bind(this);
   }
   componentDidMount() {
-    this.fetchInfo();
+    // this.fetchInfo();
+    
     let id = this.props.match.params.id;
     const context = this;
     let arr = [];
-    axios.get(`http://localhost:3002/api/bookings/${id}`)
-      .then((response) => {
-        context.addInvalidDates(response.data[0].unavailableDates);
-        context.setState(() => {
-          return {
-            data: response.data[0],
-          };
-        });
-      })
-      .catch((error) => {
-        console.log('error', error);
-      });
-    console.log('here', this.state.data.unavailableDates);
+    this.fetchBooking(id);
+    // axios.get(`http://localhost:3002/api/bookings/${id}`)
+    //   .then((response) => {
+    //     context.addInvalidDates(response.data.data[0].unavailableDates);
+    //     context.setState(() => {
+
+    //         data: response.data.data[0],
+    //       };
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     console.log('error', error);
+    //   });
+    // console.log('here', this.state.data.unavailableDates);
   }
   toggleBook() {
     if (this.state.renderBook === true) {
@@ -59,24 +62,38 @@ class Bookings extends React.Component {
       });
     }
   }
-  fetchInfo() {
-    // return this.state.unavailableDates;
-    let id = this.props.match.params.id;
-    let context = this;
-    var arr = [];
-    axios.get(`http://localhost:3002/api/bookings/${id}`)
-      .then((response) => {
-        context.addInvalidDates(response.data[0].unavailableDates);
-        context.setState(() =>{
-          return {
-            data: response.data[0],
-          };
-        });
-      })
-      .catch((error) => {
-        console.log('error', error);
-      });
-    console.log('here', this.state.data.unavailableDates);
+  // fetchInfo() {
+  //   // return this.state.unavailableDates;
+  //   let id = this.props.match.params.id;
+  //   let context = this;
+  //   var arr = [];
+  //   axios.get(`http://localhost:3002/api/bookings/${id}`)
+  //     .then((response) => {
+  //       console.log('response', response);
+  //       context.addInvalidDates(response.data.data[0].unavailableDates);
+  //       context.setState(() =>{
+  //         return {
+  //           data: response.data.data[0],
+  //         };
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       console.log('error', error);
+  //     });
+  //   console.log('here', this.state.data.unavailableDates);
+  // }
+  fetchBooking(listing) {
+    const that = this;
+    $.ajax({
+      type: 'GET',
+      url: `http://localhost:3002/api/bookings/${listing}`,
+      success: (data) => {
+        that.setState({ data: data[0].bookings });
+      },
+      error: () => {
+        console.log('error');
+      },
+    });
   }
   addInvalidDates (date) {
     console.log(date[0]);
@@ -142,11 +159,11 @@ class Bookings extends React.Component {
             ${this.state.data.cost}
             <div className={Night}>  per night </div>
           </div>
-          <Ratings ratingAmount={this.state.data.numberOfRatings} stars={this.state.data.rating}/>
+          <Ratings ratingAmount={this.state.data.numberOfRatings} stars={this.state.data.rating} />
         </div>
         <div className={Line}/>
         <div className={BookingOptions}>
-        <Calendar handleInvalidDates={this.handleInvalidDates} ud={this.state.unavailableDates} fetchInfo={this.fetchInfo.bind(this)}/>
+        <Calendar handleInvalidDates={this.handleInvalidDates} ud={this.state.unavailableDates} id={this.props.match.params.id}fetchBooking={this.fetchBooking.bind(this)}/>
         <Guests children_allowed={this.state.data.childrenAllowed} guest_max={this.state.data.guestMax} handleGuest={this.handleGuest} toggleBook={this.toggleBook}/>
         </div>
         <button className={Fake} onClick={this.handleBook}></button>

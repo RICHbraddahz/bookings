@@ -45,8 +45,8 @@ const other = () => {
 };
 
 
-const find = (id, callback) => {
-  Booking.find({ id : id }, (err, item) => {
+const find = (listId, callback) => {
+  Booking.find({ id: listId }, (err, item) => {
     callback(item);
   });
 };

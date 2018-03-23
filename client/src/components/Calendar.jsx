@@ -28,7 +28,7 @@ class Calendar extends React.Component {
     console.log(moment().add(1, "days"));
   }
   populateUnavailableDates () {
-    var func = this.props.fetchInfo;
+    var func = this.props.fetchBooking(this.props.id);
     var context = this;
     setTimeout(function() {
       var result = func();
