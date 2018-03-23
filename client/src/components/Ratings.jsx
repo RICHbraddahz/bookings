@@ -17,14 +17,4 @@ const Ratings = ({ stars, ratingAmount }) => {
   );
 };
 
-// Ratings.propTypes = {
-//   stars: React.PropTypes.number,
-//   ratingAmount: React.PropTypes.number,
-// };
-
-// Ratings.defaultProps = {
-//   stars: 4,
-//   ratingAmount: 15,
-// };
-
 export default Ratings;
