@@ -12,7 +12,7 @@ class Bookings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data : {"id":1,"unavailable_dates":["3/27/2018","3/7/2018","5/26/2018","3/3/2018","4/10/2018","4/23/2018","4/16/2018","4/22/2018","3/31/2018","4/2/2018","2/25/2018","5/10/2018","5/24/2018","4/8/2018","5/18/2018","3/21/2018","4/9/2018","2/25/2018","5/21/2018","5/3/2018","5/23/2018","3/13/2018","3/16/2018","4/17/2018","5/25/2018","4/9/2018","5/19/2018","4/30/2018","3/13/2018","4/1/2018","5/14/2018","4/8/2018","3/12/2018"],"rating":3,"rating_amount":81,"guest_max":4,"cost":187,"min_stay":3,"max_stay":25,"children_allowed":true},
+      data : {"id":1,"unavailable_dates":["3/27/2018","3/12/2018"],"rating":4,"rating_amount":81,"guest_max":4,"cost":187,"min_stay":3,"max_stay":25,"children_allowed":true},
       invalidDate: false,
       readyToBook: false,
       booked: 'Book',
@@ -25,6 +25,10 @@ class Bookings extends React.Component {
     this.handleGuest = this.handleGuest.bind(this);
     this.toggleBook = this.toggleBook.bind(this);
     this.addInvalidDates = this.addInvalidDates.bind(this);
+  }
+  componentWillMount() {
+    let id = this.props.match.params.id;
+    this.fetchBooking(id);
   }
   componentDidMount() {
     // this.fetchInfo();

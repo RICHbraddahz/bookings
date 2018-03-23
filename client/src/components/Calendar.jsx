@@ -27,19 +27,8 @@ class Calendar extends React.Component {
     console.log('here', this.props.ud);
     console.log(moment().add(1, "days"));
   }
-  populateUnavailableDates () {
-    var func = this.props.fetchBooking(this.props.id);
-    var context = this;
-    setTimeout(function() {
-      var result = func();
-      context.setState(function(){
-        return {
-          excludeDates: result
-        }
-      })
-      console.log('should be arr', func());
-    }, 2000);
-
+  populateUnavailableDates() {
+    this.setState({excludeDates: this.props.ud})
     console.log('right here', this.props.ud);
   }
   handleChangeStart(date) {
