@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/bookings');
+mongoose.connect('mongodb://localhost/seabnb');
 // const data = require('../fakeData.js');
 const { genAllData } = require('./datagenMongo');
 const data = genAllData(0, 1000);
@@ -15,8 +15,8 @@ const bookingsSchema = mongoose.Schema({
   maxStay: Number,
   childrenAllowed: Boolean,
 });
-
-const Booking = mongoose.model('Booking', bookingsSchema);
+// string is table name
+const Booking = mongoose.model('bookings', bookingsSchema);
 const save = (singleBooking) => {
   const newBooking = new Booking({
     id: singleBooking.id,
