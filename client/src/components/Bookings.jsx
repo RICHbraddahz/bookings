@@ -12,7 +12,7 @@ class Bookings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data : {"id":1,"unavailable_dates":["3/27/2018","3/12/2018"],"rating":4,"rating_amount":81,"guest_max":4,"cost":187,"min_stay":3,"max_stay":25,"children_allowed":true},
+      data: {"id":1,"unavailable_dates":["3/27/2018","3/12/2018"],"rating":4,"rating_amount":81,"guest_max":4,"cost":187,"min_stay":3,"max_stay":25,"children_allowed":true},
       invalidDate: false,
       readyToBook: false,
       booked: 'Book',
@@ -77,12 +77,7 @@ class Bookings extends React.Component {
   handleInvalidDates(option) {
     if (option === true) {
       console.log('not ready to book')
-      this.setState(() => {
-        return {
-          invalidDate: true,
-          readyToBook: false,
-        };
-      });
+      this.setState({ invalidDate: true, readyToBook: false });
     } else {
       console.log('ready to book');
       this.setState(() => {
@@ -120,18 +115,18 @@ class Bookings extends React.Component {
         </div>
         <div className={Line}/>
         <div className={BookingOptions}>
-        <Calendar handleInvalidDates={this.handleInvalidDates} ud={this.state.unavailableDates} id={this.props.match.params.id}fetchBooking={this.fetchBooking.bind(this)}/>
-        <Guests children_allowed={this.state.data.childrenAllowed} guest_max={this.state.data.guestMax} handleGuest={this.handleGuest} toggleBook={this.toggleBook}/>
+          <Calendar handleInvalidDates={this.handleInvalidDates} ud={this.state.unavailableDates} id={this.props.match.params.id}fetchBooking={this.fetchBooking.bind(this)}/>
+          <Guests children_allowed={this.state.data.childrenAllowed} guest_max={this.state.data.guestMax} handleGuest={this.handleGuest} toggleBook={this.toggleBook}/>
         </div>
-        <button className={Fake} onClick={this.handleBook}></button>
+        <button className={Fake} onClick={this.handleBook} />
         {this.state.renderBook === true
           ? <div className={BookingsMain}>
-              {this.state.invalidDate === false ? <button className={Book} onClick={this.handleBook}> {this.state.booked}</button> : <button className={Book}> Dates not available</button>}
-            </div>
+            {this.state.invalidDate === false ? <button className={Book} onClick={this.handleBook}> {this.state.booked}</button> : <button className={Book}> Dates not available</button>}
+          </div>
           : null
         }
       </div>
-    )
+    );
   }
 }
 

@@ -9,7 +9,7 @@ const config = {
   module: {
     loaders: [
       {
-        test: /\.jsx?/,
+        test: /\.(js|jsx)$/,
         include: APP_DIR,
         loader: 'babel-loader',
         query: {
@@ -33,7 +33,7 @@ const config = {
     path: BUILD_DIR,
     filename: 'index_bundle.js',
   },
-  resolve: { extensions: ['.js', '.jsx'] },
+  resolve: { extensions: ['*', '.js', '.jsx'] },
 };
 
 module.exports = config;

@@ -23,6 +23,7 @@
     "seed-mongo": "node database/MongoDB/seedMongo.js",
     "drop-mongo": "mongo seabnb --eval 'db.dropDatabase()'",
     "serve-mongo": "node server/index.js",
+    "serve-mongo-dev": "nodemon server/index.js",
     "serve-pg": "node server/PGServer/server-pg.js",
     "data": "node database/datagen.js",
     "test": "jest"
