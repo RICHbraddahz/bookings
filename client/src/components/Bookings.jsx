@@ -1,8 +1,7 @@
-import axios from 'axios';
 import moment from 'moment';
 import React from 'react';
-import Calendar from './Calendar';
 import $ from 'jquery';
+import Calendar from './Calendar';
 import Ratings from './Ratings';
 import Guests from './Guests';
 
@@ -12,7 +11,9 @@ class Bookings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {"id":1,"unavailable_dates":["3/27/2018","3/12/2018"],"rating":4,"rating_amount":81,"guest_max":4,"cost":187,"min_stay":3,"max_stay":25,"children_allowed":true},
+      data: {
+        id: 1, unavailable_dates: ['3/27/2018'], rating: 4, rating_amount: 81, guest_max: 4, cost: 187, min_stay: 3, max_stay: 25, children_allowed: true
+      },
       invalidDate: false,
       readyToBook: false,
       booked: 'Book',
@@ -27,11 +28,11 @@ class Bookings extends React.Component {
     this.addInvalidDates = this.addInvalidDates.bind(this);
   }
   componentWillMount() {
-    let id = this.props.match.params.id;
+    let id = this.props.id;
     this.fetchBooking(id);
   }
   componentDidMount() {
-    let id = this.props.match.params.id;
+    let id = this.props.id;
     this.fetchBooking(id);
   }
   toggleBook() {
@@ -113,9 +114,9 @@ class Bookings extends React.Component {
           </div>
           <Ratings ratingAmount={this.state.data.numberOfRatings} stars={this.state.data.rating} />
         </div>
-        <div className={Line}/>
+        <div className={Line} />
         <div className={BookingOptions}>
-          <Calendar handleInvalidDates={this.handleInvalidDates} ud={this.state.unavailableDates} id={this.props.match.params.id}fetchBooking={this.fetchBooking.bind(this)}/>
+          <Calendar handleInvalidDates={this.handleInvalidDates} ud={this.state.unavailableDates} id={this.props.id} fetchBooking={this.fetchBooking.bind(this)}/>
           <Guests children_allowed={this.state.data.childrenAllowed} guest_max={this.state.data.guestMax} handleGuest={this.handleGuest} toggleBook={this.toggleBook}/>
         </div>
         <button className={Fake} onClick={this.handleBook} />
@@ -130,4 +131,5 @@ class Bookings extends React.Component {
   }
 }
 
+window.Bookings = Bookings;
 exports.Bookings = Bookings;

@@ -5,7 +5,17 @@
   <link href="https://fonts.googleapis.com/css?family=Quicksand|Roboto" rel="stylesheet">
 </head>
 <body>
-<div id="app"></div>
+<div id="bookings"></div>
 <script src='/dist/index_bundle.js'></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script>
+  const id = Number(window.location.pathname.split('/')[1]);
+  ReactDOM.render(
+  React.createElement(Bookings, {id: id}),
+  document.getElementById('bookings')
+  );
+</script>
+
 </body>
 </html>

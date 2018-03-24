@@ -10,18 +10,14 @@ mongoose.connect('mongodb://localhost/seabnb');
 
 const port = 3002;
 const app = express();
-console.log(path.join(__dirname, '/../client/dist'));
 
 app.use('/bookings/:id', express.static(path.join(__dirname, '/../client')));
 app.use('/dist/index_bundle.js', express.static(path.join(__dirname, '/../client/dist/index_bundle.js')));
-// app.use('/index_bundle.js', express.static(path.join(__dirname, '/../client/dist/index_bundle.js')));
 
-// app.use('/bookings/index_bundle.js', express.static(path.join(__dirname, '/../client/dist/index_bundle.js')));
 app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/api/bookings/:id', (req, res) => {
-  console.log(req.params.id);
   db.Booking.find({ id: req.params.id })
     .exec((err, data) => {
       res.send(data);
