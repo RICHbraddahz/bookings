@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { Bookings } from './components/Bookings';
 
-const App = () => (
+const App = ({id}) => (
       <Router>
         <div>
           <Route path='/' exact render={(props) => {
             return  <Bookings {...props} />
           }} />
-          <Route path='/:bookings/:id' component={Bookings} />
+          <Route path='/:bookings/:id' id={id} component={Bookings} />
         </div>
       </Router>
 );

@@ -17,8 +17,8 @@ class Bookings extends React.Component {
       readyToBook: false,
       booked: 'Book',
       renderBook: true,
-      unavailableDates: [moment('2018/3/20')]
-    }
+      unavailableDates: [moment('2018/3/20')],
+    };
     this.handleInvalidDates = this.handleInvalidDates.bind(this);
     this.handleBook = this.handleBook.bind(this);
     this.fetchBooking = this.fetchBooking.bind(this);
@@ -31,25 +31,8 @@ class Bookings extends React.Component {
     this.fetchBooking(id);
   }
   componentDidMount() {
-    // this.fetchInfo();
-    
     let id = this.props.match.params.id;
-    const context = this;
-    let arr = [];
     this.fetchBooking(id);
-    // axios.get(`http://localhost:3002/api/bookings/${id}`)
-    //   .then((response) => {
-    //     context.addInvalidDates(response.data.data[0].unavailableDates);
-    //     context.setState(() => {
-
-    //         data: response.data.data[0],
-    //       };
-    //     });
-    //   })
-    //   .catch((error) => {
-    //     console.log('error', error);
-    //   });
-    // console.log('here', this.state.data.unavailableDates);
   }
   toggleBook() {
     if (this.state.renderBook === true) {
@@ -66,26 +49,6 @@ class Bookings extends React.Component {
       });
     }
   }
-  // fetchInfo() {
-  //   // return this.state.unavailableDates;
-  //   let id = this.props.match.params.id;
-  //   let context = this;
-  //   var arr = [];
-  //   axios.get(`http://localhost:3002/api/bookings/${id}`)
-  //     .then((response) => {
-  //       console.log('response', response);
-  //       context.addInvalidDates(response.data.data[0].unavailableDates);
-  //       context.setState(() =>{
-  //         return {
-  //           data: response.data.data[0],
-  //         };
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.log('error', error);
-  //     });
-  //   console.log('here', this.state.data.unavailableDates);
-  // }
   fetchBooking(listing) {
     const that = this;
     $.ajax({
