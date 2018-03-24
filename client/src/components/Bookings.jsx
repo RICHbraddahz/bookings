@@ -62,23 +62,17 @@ class Bookings extends React.Component {
       },
     });
   }
-  addInvalidDates (date) {
-    console.log(date[0]);
-    console.log()
-    var final = [];
-    for(let i = 0; i < date.length; i += 1) {
+  addInvalidDates(date) {
+    const final = [];
+    for (let i = 0; i < date.length; i += 1) {
       let correct = date[i].split('/');
-      let last = correct.pop();
+      const last = correct.pop();
       correct.unshift(last);
       correct = correct.join('/');
       console.log(correct);
       final.push(moment(correct));
     }
-    this.setState(() => {
-      return {
-        unavailableDates: final
-      }
-    })
+    this.setState({ unavailableDates: final });
   }
   handleInvalidDates(option) {
     if (option === true) {
@@ -101,11 +95,7 @@ class Bookings extends React.Component {
   }
   handleGuest(adultAmount) {
     if (adultAmount >= 1) {
-      this.setState(() => {
-        return {
-          guestReady: true,
-        };
-      });
+      this.setState({ guestReady: true });
     }
   }
   handleBook() {
