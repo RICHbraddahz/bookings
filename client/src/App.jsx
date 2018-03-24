@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { Bookings } from './components/Bookings';
 
@@ -13,4 +14,6 @@ const App = () => (
       </Router>
 );
 
+ReactDOM.render(<App />, document.getElementById('app'));
+window.Bookings = App;
 export default App;
