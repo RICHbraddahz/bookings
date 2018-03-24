@@ -11,7 +11,7 @@ const port = 3002;
 const app = express();
 console.log(path.join(__dirname, '/../client/dist'));
 app.use('/bookings/:id', express.static(path.join(__dirname, '/../client')));
-// app.use('/', express.static(path.join(__dirname, '/../client/dist/bundle.js')));
+app.use('/', express.static(path.join(__dirname, '/../client/dist/index_bundle.js')));
 app.use(bodyParser.json());
 app.use(cors());
 
