@@ -1,9 +1,8 @@
 import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { Bookings } from './components/Bookings';
-export default class App extends React.Component {
-  render() {
-    return (
+
+const App = () => (
       <Router>
         <div>
           <Route path='/' exact render={(props) => {
@@ -12,6 +11,6 @@ export default class App extends React.Component {
           <Route path='/:bookings/:id' component={Bookings} />
         </div>
       </Router>
-    );
-  }
-}
+);
+
+export default App;

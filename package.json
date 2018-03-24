@@ -61,6 +61,7 @@
     "mongoose": "^5.0.9",
     "newrelic": "^3.2.0",
     "nodemon": "^1.15.1",
+    "npm": "^5.8.0",
     "os": "^0.1.1",
     "pg-promise": "^8.2.2",
     "prop-types": "^15.5.4",
