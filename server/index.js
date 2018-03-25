@@ -10,12 +10,11 @@ mongoose.connect('mongodb://localhost/seabnb');
 
 const port = 3002;
 const app = express();
+app.use(bodyParser.json());
+app.use(cors());
 
 app.use('/bookings/:id', express.static(path.join(__dirname, '/../client')));
 app.use('/dist/index_bundle.js', express.static(path.join(__dirname, '/../client/dist/index_bundle.js')));
-
-app.use(bodyParser.json());
-app.use(cors());
 
 app.get('/api/bookings/:id', (req, res) => {
   db.Booking.find({ id: req.params.id })
