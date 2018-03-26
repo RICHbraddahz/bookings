@@ -27,10 +27,10 @@ class Bookings extends React.Component {
     this.toggleBook = this.toggleBook.bind(this);
     this.addInvalidDates = this.addInvalidDates.bind(this);
   }
-  componentWillMount() {
-    let id = this.props.id;
-    this.fetchBooking(id);
-  }
+  // componentWillMount() {
+  //   let id = this.props.id;
+  //   this.fetchBooking(id);
+  // }
   componentDidMount() {
     let id = this.props.id;
     this.fetchBooking(id);

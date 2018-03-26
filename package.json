@@ -8,9 +8,9 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "npm run drop && npm run seed && npm run build && nodemon server/index.js",
+    "start": "npm run drop && npm run seed && npm run build && nodemon server/MongoServer/server-mongo.js",
     "start-pg": "npm run restart-pg && sleep 5s && npm run drop-pg && npm run seed-pg && node server/PGServer/server-pg.js",
-    "start-mongo": "npm run drop-mongo && npm run seed-mongo && npm run build && node server/index.js",
+    "start-mongo": "npm run drop-mongo && npm run seed-mongo && npm run build && node server/MongoServer/server-mongo.js",
     "query-mongo": "node database/MongoDB/queryMongo.js",
     "query-pg": "node database/PostgreSQL/queryPostgres.js",
     "build": "webpack -d",
@@ -22,8 +22,8 @@
     "drop-pg": "dropdb seabnb",
     "seed-mongo": "node database/MongoDB/seedMongo.js",
     "drop-mongo": "mongo seabnb --eval 'db.dropDatabase()'",
-    "serve-mongo": "node server/index.js",
-    "serve-mongo-dev": "nodemon server/index.js",
+    "serve-mongo": "node server/MongoServer/server-mongo.js",
+    "serve-mongo-dev": "nodemon server/MongoServer/server-mongo.js",
     "serve-pg": "node server/PGServer/server-pg.js",
     "data": "node database/datagen.js",
     "test": "jest"

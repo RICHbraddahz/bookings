@@ -1,5 +1,5 @@
 'use strict'
-const key = require('../newRelicKey');
+const key = require('../../newRelicKey');
 /**
  * New Relic agent configuration.
  *
