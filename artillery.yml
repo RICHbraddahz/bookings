@@ -1,13 +1,14 @@
 config:
   target: 'http://localhost:3002'
   phases:
-    - duration: 60
-      arrivalRate: 50
+    - duration: 3
+      arrivalRate: 2000
   processor: "./randomId.js"
 scenarios:
   - flow: 
-    - loop:
+    - loop:   
       - function: "genRandomId"
       - get:
           url: "/booking/{{ id }}"
       - log: "Request to id {{ id }}"
+        count: 1

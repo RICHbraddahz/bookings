@@ -13,7 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/bookings/:id', express.static(path.join(__dirname, '/../../client')));
+// app.use('/bookings/:id', express.static(path.join(__dirname, '/../../client')));
 
 app.get('/booking/:id', (req, res) => {
   db.Booking.find({ id: req.params.id })
@@ -22,13 +22,13 @@ app.get('/booking/:id', (req, res) => {
     });
 });
 
-app.get('/*', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '/../../client/index.html'), function(err) {
-    if (err) {
-      res.status(500).send(err)
-    }
-  })
-});
+// app.get('/*', (req, res, next) => {
+//   res.sendFile(path.join(__dirname, '/../../client/index.html'), function(err) {
+//     if (err) {
+//       res.status(500).send(err)
+//     }
+//   })
+// });
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
