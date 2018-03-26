@@ -1,5 +1,5 @@
+require('newrelic');
 const express = require('express');
-const nr = require('newrelic');
 const mongoose = require('mongoose');
 const db = require('../../database/MongoDB/index.js');
 const bodyParser = require('body-parser');

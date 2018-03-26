@@ -26,7 +26,8 @@
     "serve-mongo-dev": "nodemon server/MongoServer/server-mongo.js",
     "serve-pg": "node server/PGServer/server-pg.js",
     "data": "node database/datagen.js",
-    "test": "jest"
+    "test": "jest",
+    "test-relic": "artillery run artillery.yml"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",

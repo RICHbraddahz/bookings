@@ -3,7 +3,10 @@ config:
   phases:
     - duration: 60
       arrivalRate: 20
+  processor: "./randomId.js"
 scenarios:
-  - flow:
+  - flow: 
+    - function: "genRandomId"
     - get:
-        url: "/booking/102"
+        url: "/booking/{{ id }}"
+    - log: "Request to id {{ id }}"
