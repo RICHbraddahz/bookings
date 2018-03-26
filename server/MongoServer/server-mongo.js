@@ -15,7 +15,7 @@ app.use(cors());
 
 app.use('/bookings/:id', express.static(path.join(__dirname, '/../../client')));
 
-app.get('/api/bookings/:id', (req, res) => {
+app.get('/booking/:id', (req, res) => {
   db.Booking.find({ id: req.params.id })
     .exec((err, data) => {
       res.send(data);

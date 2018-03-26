@@ -54,7 +54,7 @@ class Bookings extends React.Component {
     const that = this;
     $.ajax({
       type: 'GET',
-      url: `/api/bookings/${listing}`,
+      url: `/booking/${listing}`,
       success: (data) => {
         that.setState({ data: data[0].bookings });
       },

@@ -28,7 +28,7 @@ async function generateBookings() {
     };
     bookings.push(Booking);
   }
-  collection.createIndex({ id: 1 });
-  process.exit();
+  collection.createIndex({ id: 1 })
+    .then(() => process.exit());
 }
 generateBookings();

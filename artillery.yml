@@ -6,4 +6,4 @@ config:
 scenarios:
   - flow:
     - get:
-        url: "/bookings/102"
+        url: "/booking/102"

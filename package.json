@@ -10,7 +10,7 @@
   "scripts": {
     "start": "npm run drop && npm run seed && npm run build && nodemon server/MongoServer/server-mongo.js",
     "start-pg": "npm run restart-pg && sleep 5s && npm run drop-pg && npm run seed-pg && node server/PGServer/server-pg.js",
-    "start-mongo": "npm run drop-mongo && npm run seed-mongo && npm run build && node server/MongoServer/server-mongo.js",
+    "start-mongo": "npm run drop-mongo && npm run seed-mongo && npm run build && nodemon server/MongoServer/server-mongo.js",
     "query-mongo": "node database/MongoDB/queryMongo.js",
     "query-pg": "node database/PostgreSQL/queryPostgres.js",
     "build": "webpack -d",
@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "axios": "^0.16.0",
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "cluster": "^0.7.7",
     "cors": "^2.8.4",
@@ -74,6 +75,7 @@
     "react-icons": "^2.2.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "redis": "^2.8.0",
     "styled-components": "^3.1.6",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1"
