@@ -27,7 +27,9 @@
     "serve-pg": "node server/PGServer/server-pg.js",
     "data": "node database/datagen.js",
     "test": "jest",
-    "test-relic": "artillery run artillery.yml"
+    "test-relic": "artillery run artillery.yml",
+    "stop-redis": "redis-cli shutdown",
+    "redis": "redis-server"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",
