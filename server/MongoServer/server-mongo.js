@@ -5,19 +5,7 @@ const cors = require('cors');
 const redis = require('redis');
 const bluebird = require('bluebird');
 const db = require('../../database/MongoDB/index.js');
-const path = require('path');
-// const mongoose = require('mongoose');
-// const bodyParser = require('body-parser');
-
-// const App = require('../../client/src/App.jsx');
-// const React = require('react');
-// const ReactDOM = require('react-dom/server');
-
-// const renderComponent = data => ReactDOM.renderToString(React.createElement(App, { data }));
-
-// module.exports = renderComponent;
-
-// mongoose.connect('mongodb://localhost/seabnb');
+// const path = require('path');
 
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
@@ -26,7 +14,6 @@ const redisClient = redis.createClient();
 
 const port = 3002;
 const app = express();
-// app.use(bodyParser.json());
 
 redisClient.on('error', (err) => {
   console.log(err);
@@ -49,24 +36,19 @@ const getData = async (id, mongoClient, redisClient) => {
   return result;
 };
 
-// const insertData = (collection, descriptions) => collection.insertMany(descriptions);
-
 MongoClient.connect('mongodb://localhost/seabnb')
   .then((mongoClient) => {
     app.use(cors());
 
     app.use('/bookings/:id', async (req, res) => {
       const { id } = req.params;
-      let data = await getData(id, mongoClient, redisClient);
-      
-      // let html = renderComponent(data);
-
+      const data = await getData(id, mongoClient, redisClient);
       res.send(data);
     });
 
     app.get('/booking/:id', async (req, res) => {
       const { id } = req.params;
-      let data = await getData(id, mongoClient, redisClient);
+      const data = await getData(id, mongoClient, redisClient);
       res.send(data);
     });
 
